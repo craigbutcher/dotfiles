@@ -1,0 +1,14 @@
+{
+	"session_name": "dotfiles",
+	"start_directory": "~/Repos/dotfiles/",
+	"windows": [
+		{
+			"window_name": "dotfiles",
+			"layout": "main-vertical",
+			"panes": [
+				"nvim",
+				"fzf"
+			]
+		}
+	]
+}
