@@ -43,7 +43,7 @@ fi
 # Brew Maintenance
 alias brewup="brew update && brew upgrade && brew cleanup -s && brew upgrade --cask && brew doctor"
 alias brewdoctor="brew doctor && brew missing"
-alias brewdump='brew bundle dump --file="$HOME/Repos/Brewfile-$(hostname)" -f'
+alias brewdump='brew bundle dump --file="$HOME/Brewfile-$(hostname)" -f'
 
 #
 # Nvm (Node Version Manager)
