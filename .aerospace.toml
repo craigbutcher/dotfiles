@@ -113,8 +113,8 @@ automatically-unhide-macos-hidden-apps = false
     cmd-shift-l = 'move right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-    cmd-minus = 'resize smart -50'
-    cmd-equal = 'resize smart +50'
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     cmd-1 = 'workspace 1'
@@ -140,8 +140,13 @@ automatically-unhide-macos-hidden-apps = false
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     cmd-tab = 'workspace-back-and-forth'
+
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
     cmd-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+    # Disable "hide applications" and "hide others"
+    cmd-h = []
+    cmd-alt-h = []
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     cmd-shift-semicolon = 'mode service'
