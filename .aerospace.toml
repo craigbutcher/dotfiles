@@ -7,7 +7,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget borders active_color=0xff1688f0 inactive_color=0xff494d64 width=6.0',
+    'exec-and-forget borders active_color=0xff1688f0 inactive_color=0xff494d64 width=5.0',
 ]
 
 # Start AeroSpace at login
@@ -35,12 +35,12 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+# on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-cmd-h key
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
-automatically-unhide-macos-hidden-apps = false
+automatically-unhide-macos-hidden-apps = true
 
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -117,32 +117,28 @@ automatically-unhide-macos-hidden-apps = false
     alt-equal = 'resize smart +50'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-    cmd-1 = 'workspace 1'
-    cmd-2 = 'workspace 2'
-    cmd-3 = 'workspace 3'
-    cmd-4 = 'workspace 4'
-    cmd-5 = 'workspace 5'
-    cmd-6 = 'workspace 6'
-    cmd-7 = 'workspace 7'
-    cmd-8 = 'workspace 8'
-    cmd-9 = 'workspace 9'
+    alt-1 = 'workspace Communication'
+    alt-2 = 'workspace Browsing'
+    alt-3 = 'workspace Development'
+    alt-4 = 'workspace Research'
+    alt-5 = 'workspace Writing'
+    alt-6 = 'workspace VM'
+    alt-7 = 'workspace Other'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-    cmd-ctrl-1 = 'move-node-to-workspace 1'
-    cmd-ctrl-2 = 'move-node-to-workspace 2'
-    cmd-ctrl-3 = 'move-node-to-workspace 3'
-    cmd-ctrl-4 = 'move-node-to-workspace 4'
-    cmd-ctrl-5 = 'move-node-to-workspace 5'
-    cmd-ctrl-6 = 'move-node-to-workspace 6'
-    cmd-ctrl-7 = 'move-node-to-workspace 7'
-    cmd-ctrl-8 = 'move-node-to-workspace 8'
-    cmd-ctrl-9 = 'move-node-to-workspace 9'
+    cmd-ctrl-1 = 'move-node-to-workspace Communication'
+    cmd-ctrl-2 = 'move-node-to-workspace Browsing'
+    cmd-ctrl-3 = 'move-node-to-workspace Development'
+    cmd-ctrl-4 = 'move-node-to-workspace Research'
+    cmd-ctrl-5 = 'move-node-to-workspace Writing'
+    cmd-ctrl-6 = 'move-node-to-workspace VM'
+    cmd-ctrl-7 = 'move-node-to-workspace Other'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-    cmd-tab = 'workspace-back-and-forth'
+    alt-tab = 'workspace-back-and-forth'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-    cmd-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
     # Disable "hide applications" and "hide others"
     cmd-h = []
@@ -170,3 +166,26 @@ automatically-unhide-macos-hidden-apps = false
     # down = 'volume down'
     # up = 'volume up'
     # shift-down = ['volume set 0', 'mode main']
+
+# When we are using an additional monitor, we need to assign these to the correct workspace
+#
+# Main monitor = 'main'
+# Secondary monitor = 'secondary'
+#
+# If you want to put the application on a secondary monitor with a fallback to main monitor
+#
+# Development = ['secondary', 'main']
+#
+# Else if you want it strictly on main
+#
+# Browsing = 'main'
+
+[workspace-to-monitor-force-assignment]
+    Communication = 'main'
+    Browsing = 'main'
+    Development = ['secondary', 'main']
+    Research = ['secondary', 'main']
+    Writing = ['secondary', 'main']
+    VM = ['secondary', 'main']
+    Other = ['secondary', 'main']
+
