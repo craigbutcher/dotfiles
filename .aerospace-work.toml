@@ -131,7 +131,7 @@ automatically-unhide-macos-hidden-apps = true
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-b = 'workspace B' # Browsers
     alt-c = 'workspace C' # Communications
-    alt-f = 'workspace E' # Emails
+    alt-e = 'workspace E' # Emails
     alt-m = 'workspace M' # Messages
     alt-n = 'workspace N' # Notes
     alt-p = 'workspace P' # Photo editing

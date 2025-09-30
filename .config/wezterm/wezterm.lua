@@ -18,7 +18,7 @@ config.window_padding = {
 	bottom = 15,
 }
 
-config.font = wezterm.font("JetBrains Mono", { weight = "DemiBold" })
+config.font = wezterm.font("JetBrains Mono", { weight = "Medium" })
 
 -- macOS hash key fix
 config.send_composed_key_when_left_alt_is_pressed = true
