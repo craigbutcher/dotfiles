@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices.
 -- or, changing the font size and color scheme.
-config.font_size = 18
+config.font_size = 20
 config.color_scheme = "rose-pine"
 -- config.color_scheme = "Catppuccin Mocha"
 

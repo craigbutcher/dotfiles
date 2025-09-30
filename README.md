@@ -3,7 +3,10 @@
 A collection of dotfiles
 
 - aerospace
+- ghostty
+- gitui
 - tmux
-- tmuxp
-- zshrc
 - vimrc
+- wezterm
+- yazi
+- zshrc
