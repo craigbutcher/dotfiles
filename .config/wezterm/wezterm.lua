@@ -4,9 +4,11 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- This is where you actually apply your config choices.
--- or, changing the font size and color scheme.
+-- Font size and set typography and weight
 config.font_size = 20
+config.font = wezterm.font("JetBrains Mono", { weight = "Medium" })
+
+-- Bouncing between Rose Pine and Catppuccin Mocha
 config.color_scheme = "rose-pine"
 -- config.color_scheme = "Catppuccin Mocha"
 
@@ -18,18 +20,17 @@ config.window_padding = {
 	bottom = 15,
 }
 
-config.font = wezterm.font("JetBrains Mono", { weight = "Medium" })
+config.colors = {
+	-- the foreground color of selected text
+	selection_fg = "#FFBE69",
+	-- the background color of selected text
+	selection_bg = "#26233C",
+}
 
 -- macOS hash key fix
 config.send_composed_key_when_left_alt_is_pressed = true
 
--- increase tab sizing to fit
--- config.cursor_blink_rate = 800
--- config.cursor_thickness = 2px
--- config.line_height = 2.5px,
--- config.underline_position = 1px,
--- config.underline_thickness = 2px,
-
+-- Tab bar
 config.tab_bar_at_bottom = false
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
@@ -45,7 +46,7 @@ wezterm.on("window-config-reloaded", function(window)
 	wezterm.GLOBAL.cols = get_max_cols(window)
 end)
 
-wezterm.on("window-resized", function(window, pane)
+wezterm.on("window-resized", function(window)
 	wezterm.GLOBAL.cols = get_max_cols(window)
 end)
 
