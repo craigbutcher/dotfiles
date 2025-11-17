@@ -1,0 +1,105 @@
+#!/bin/bash
+
+# Load in themes
+source "$CONFIG_DIR/colours.sh"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+ITEMS_DIR="$CONFIG_DIR/items"
+
+##### Bar Appearance #####
+# Configuring the general appearance of the bar.
+# These are only some of the options available. For all options see:
+# https://felixkratz.github.io/SketchyBar/config/bar
+# If you are looking for other colors, see the color picker:
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+
+# sketchybar --bar position=top height=30 blur_radius=30 color=0x00000000 --add event aerospace_workspace_change
+
+# Set the bar
+sketchybar --bar \
+			  height=32 \
+              blur_radius=30 \
+              color=0x00000000 \
+              position=top \
+              margin=0 \
+              sticky=on \
+              notch_width=188 \
+              --add event aerospace_workspace_change \
+              color=$SURFACE \
+              sticky=off
+
+##### Changing Defaults #####
+# We now change some default values, which are applied to all further items.
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
+
+default=(
+    # background.color=0xffd77839
+    background.color="$BAR_COLOR"
+    # background.color=0xff172121
+    # background.border_color=0xffffffff
+    # background.border_width=1
+    background.drawing=on
+    # padding_left=5
+    # padding_right=5
+    icon.font="Hack Nerd Font:Bold:12.0"
+    label.font="JetBrainsMonoNL NF:Bold:12.0"
+    icon.color="$iris"
+    label.color="$white"
+    # icon.padding_left=4
+    # icon.padding_right=4
+    # label.padding_left=4
+    # label.padding_right=4
+    background.height=28
+    background.corner_radius=5
+	background.padding_right=5
+	y_offset=-2
+)
+
+# Run the default settings (from the list above)
+sketchybar --default "${default[@]}"
+
+# Left side bar
+f
+sketchybar --add item apple.logo left \
+           --set apple.logo icon="" \
+                            icon.font="JetBrainsMonoNL NF:Bold:16.0" \
+                            label.drawing=off \
+                            click_script="sketchybar -m --set \$NAME popup.drawing=toggle" \
+                            popup.background.border_width=2 \
+                            popup.background.corner_radius=3 \
+                            popup.background.border_color=0xff9dd274 \
+							popup.background.color=0x82000000 \
+                                                                      \
+           --default background.padding_left=5 \
+                     background.padding_right=5 \
+                     icon.padding_right=5 \
+                     icon.font="JetBrainsMonoNL NF:Bold:12.0" \
+                     label.font="JetBrainsMonoNL NF:Bold:12.0" \
+                                                                        \
+           --add item apple.preferences popup.apple.logo \
+           --set apple.preferences icon= \
+                          label="preferences" \
+                          click_script="open -a 'System Settings';
+                                          sketchybar -m --set apple.logo popup.drawing=off" \
+                                              \
+            --add item apple.activity popup.apple.logo \
+            --set apple.activity icon= \
+                          label="activity" \
+                          click_script="open -a 'Activity Monitor';
+                                          sketchybar -m --set apple.logo popup.drawing=off" \
+
+
+##### Adding Left Items #####
+source "$ITEM_DIR/apple_logo.sh"
+source "$ITEMS_DIR/aerospace.sh"
+source "$ITEMS_DIR/front_app.sh"
+
+# Right side items
+source "$ITEMS_DIR/calendar.sh"
+source "$ITEMS_DIR/volume.sh"
+source "$ITEMS_DIR/battery.sh"
+source "$ITEMS_DIR/cpu.sh"
+# source "$ITEMS_DIR/network.sh"
+
+##### Force all scripts to run the first time (never do this in a script) #####
+sketchybar --update
