@@ -8,9 +8,8 @@ local config = wezterm.config_builder()
 config.font_size = 20
 config.font = wezterm.font("JetBrains Mono", { weight = "Medium" })
 
--- Bouncing between Rose Pine and Catppuccin Mocha
+-- Rose Pine <3
 config.color_scheme = "rose-pine"
--- config.color_scheme = "Catppuccin Mocha"
 
 -- keyboard configuration
 config.window_padding = {
@@ -64,6 +63,9 @@ end)
 config.hide_tab_bar_if_only_one_tab = true
 
 config.window_decorations = "RESIZE"
+
+-- Turn off macOS fullscreen mode
+config.native_macos_fullscreen_mode = false
 
 -- Finally, return the configuration to wezterm:
 return config
