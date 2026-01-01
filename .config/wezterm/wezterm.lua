@@ -8,10 +8,10 @@ local config = wezterm.config_builder()
 config.font_size = 20
 config.font = wezterm.font("JetBrains Mono", { weight = "Medium" })
 
--- Rose Pine <3
+-- Theme - Rose Pine
 config.color_scheme = "rose-pine"
 
--- keyboard configuration
+-- Window configuration
 config.window_padding = {
 	left = 10,
 	right = 10,
@@ -19,6 +19,7 @@ config.window_padding = {
 	bottom = 15,
 }
 
+-- Foreground / background selected text
 config.colors = {
 	-- the foreground color of selected text
 	selection_fg = "#FFBE69",
@@ -26,8 +27,13 @@ config.colors = {
 	selection_bg = "#26233C",
 }
 
--- macOS hash key fix
-config.send_composed_key_when_left_alt_is_pressed = true
+-- For macOS only
+if wezterm.target_triple == "aarch64-apple-darwin" or "x86_64-apple-darwin" then
+	-- macOS hash key fix
+	config.send_composed_key_when_left_alt_is_pressed = true
+	-- Turn off macOS fullscreen mode
+	config.native_macos_fullscreen_mode = false
+end
 
 -- Tab bar
 config.tab_bar_at_bottom = false
@@ -35,7 +41,7 @@ config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 999
 
-function get_max_cols(window)
+local function get_max_cols(window)
 	local tab = window:active_tab()
 	local cols = tab:get_size().cols
 	return cols
@@ -62,10 +68,8 @@ end)
 -- Tab bar configuration
 config.hide_tab_bar_if_only_one_tab = true
 
+-- Disable the title bar but enable the resizeable border
 config.window_decorations = "RESIZE"
-
--- Turn off macOS fullscreen mode
-config.native_macos_fullscreen_mode = false
 
 -- Finally, return the configuration to wezterm:
 return config
